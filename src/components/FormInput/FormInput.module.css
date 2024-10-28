@@ -1,0 +1,24 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.inputContainer{
+    height: 2.5rem;
+    width: 23.375rem;
+    border-radius: 8px;
+    background-color: #EEF5FF;
+    border: 1px solid #002D6C;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+
+.input{
+    outline: none;
+    width: 100%;
+    background-color: #EEF5FF;
+    border: none;
+}
