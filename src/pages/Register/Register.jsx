@@ -1,10 +1,17 @@
 import styles from "./Register.module.css"
 import registerImage from "../../assets/images/registerImage.png"
 import FormInput from "../../components/FormInput/FormInput"
-import { MdVisibilityOff } from "react-icons/md"
+import { MdVisibility, MdVisibilityOff } from "react-icons/md"
 import Button from "../../components/Button/Button"
+import { useState } from "react"
 
 const Register = () => {
+  const [showPassword, setShowPassword] = useState(false);
+
+  const toggleVisibility = () => {
+    setShowPassword((visibility) => !visibility);
+  }
+
   return (
     <div className={styles.container}>
       <div className={styles.header}></div>
@@ -17,8 +24,14 @@ const Register = () => {
           <p style={{fontSize: "20px", fontWeight: "600", alignSelf: "flex-start"}}>Crie uma conta</p>
           <FormInput label="Nome de usuário" type="name" placeholder="Seu nome de usuário" />
           <FormInput label="E-mail" type="email" placeholder="Endereço de e-mail" />
-          <FormInput label="Senha" type="password" placeholder="Senha secreta"><MdVisibilityOff size={25} color="#395B8A" /></FormInput>
-          <FormInput label="Confirme a senha" type="password" placeholder="Senha secreta"><MdVisibilityOff size={25} color="#395B8A" /></FormInput>
+          <FormInput label="Senha" type={showPassword ? "text" : "password"} placeholder="Senha secreta">
+            {showPassword ? (<MdVisibility size={25} color="#395B8A" onClick={toggleVisibility} style={{ cursor: "pointer" }} />) 
+            : (<MdVisibilityOff size={25} color="#395B8A" onClick={toggleVisibility} style={{ cursor: "pointer" }} />)}
+          </FormInput>
+          <FormInput label="Confirme a senha" type={showPassword ? "text" : "password"} placeholder="Senha secreta">
+            {showPassword ? (<MdVisibility size={25} color="#395B8A" onClick={toggleVisibility} style={{ cursor: "pointer" }} />) 
+            : (<MdVisibilityOff size={25} color="#395B8A" onClick={toggleVisibility} style={{ cursor: "pointer" }} />)}
+          </FormInput>
           <Button value="Criar cadastro" />
         </form>
         <span className={styles.divisor1} />
