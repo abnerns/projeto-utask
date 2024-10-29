@@ -30,7 +30,7 @@ const Login = () => {
                 </div>
                 <Button value="Entrar" />
                 <span className={styles.divisor2} />
-                <p className={styles.cadastro}>Não tem cadastro ? Crie uma conta</p>
+                <a href="/register" className={styles.cadastro}>Não tem cadastro ? Crie uma conta</a>
             </form>
         </div>
         
