@@ -22,3 +22,12 @@
     background-color: #EEF5FF;
     border: none;
 }
+
+.invalid {
+    background-color: #FFE5E5;
+    border-color: #820000;
+}
+
+.invalid input{
+    background-color: #FFE5E5;
+}
