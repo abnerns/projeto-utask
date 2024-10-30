@@ -5,6 +5,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import Button from "../../components/Button/Button";
 import { useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const url = "http://localhost:3000/users";
 
@@ -18,6 +19,7 @@ const Register = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const passwdRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[.#?!@$%^&*-]).{5,}$/;
   const emailRegex = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
@@ -55,16 +57,17 @@ const Register = () => {
       const res = await axios.post(url, { username, email, password });
       if (res.status === 201) {
         alert("Usuário cadastrado com sucesso!");
+        setUsername("");
+        setEmail("");
+        setPassword("");
+        setConfirmPassword("");
+        navigate("/");
       }
     } catch (error) {
       console.error("Erro ao cadastrar usuário:", error);
       alert("Erro ao cadastrar o usuário.");
     }
 
-    setUsername("");
-    setEmail("");
-    setPassword("");
-    setConfirmPassword("");
   };
 
   return (

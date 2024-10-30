@@ -41,6 +41,18 @@
       "username": "ab",
       "email": "ab@gmail.com",
       "password": "Ab123."
+    },
+    {
+      "id": "bbef",
+      "username": "oi",
+      "email": "oi123@gmail.com",
+      "password": "Oi123."
+    },
+    {
+      "id": "0f46",
+      "username": "ei",
+      "email": "ei123@gmail.com",
+      "password": "Ei123."
     }
   ]
 }

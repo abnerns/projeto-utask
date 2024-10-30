@@ -6,6 +6,7 @@ import styles from "./Login.module.css";
 import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const url = "http://localhost:3000/users";
 
@@ -15,12 +16,13 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const navigate = useNavigate();
 
   const toggleVisibility = () => {
     setShowPassword((visibility) => !visibility);
   };
 
-  const handleLogin = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setEmailError("");
     setPasswordError("");
@@ -37,6 +39,7 @@ const Login = () => {
           alert("Login bem-sucedido.");
           setEmail("");
           setPassword("");
+          navigate("/home");
         } else {
           setPasswordError("Senha incorreta, tente novamente.");
         }
@@ -53,7 +56,7 @@ const Login = () => {
       <div className={styles.body}>
         <img src={loginImage} alt="logo-image" />
         <span className={styles.divisor1} />
-        <form className={styles.form} onSubmit={handleLogin}>
+        <form className={styles.form} onSubmit={handleSubmit}>
           <p className={styles.title}>uTask 3.0</p>
           <div>
             <FormInput
@@ -84,7 +87,7 @@ const Login = () => {
             <span className={styles.validate} style={{ display: passwordError ? "block" : "none" }}>{passwordError}</span>
             <p className={styles.senhaRecup}>Esqueceu a senha?</p>
           </div>
-          <Button onClick value="Entrar" />
+          <Button value="Entrar" />
           <span className={styles.divisor2} />
           <Link to="/register" className={styles.cadastro}>Não tem cadastro? Crie uma conta</Link>
         </form>
