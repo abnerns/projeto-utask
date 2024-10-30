@@ -52,8 +52,8 @@ const Register = () => {
     }
 
     try {
-      const response = await axios.post(url, { username, email, password });
-      if (response.status === 201) {
+      const res = await axios.post(url, { username, email, password });
+      if (res.status === 201) {
         alert("Usuário cadastrado com sucesso!");
       }
     } catch (error) {
@@ -133,7 +133,6 @@ const Register = () => {
             </FormInput>
             <span className={styles.validate} style={{ display: confirmPasswordError ? "block" : "none" }}>{confirmPasswordError}</span>
           </div>
-          
           <Button value="Criar cadastro" />
         </form>
         <span className={styles.divisor1} />
