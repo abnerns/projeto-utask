@@ -26,22 +26,25 @@ const Login = () => {
     setPasswordError("");
 
     try {
-      const res = await axios.get(url, {
-        params: {
-          email: email,
-          password: password,
-        },
-      });
-
-      if (res.data.length > 0) {
-        alert("Loading...");
-      } else {
+      const emailRes = await axios.get(url, { params: { email: email } });
+      
+      if (emailRes.data.length === 0) {
         setEmailError("Insira um e-mail válido.");
-        setPasswordError("Senha incorreta, tente novamente.");
+      } else {
+        const passwordRes = await axios.get(url, { params: { email: email, password: password } });
+
+        if (passwordRes.data.length > 0) {
+          alert("Login bem-sucedido.");
+          setEmail("");
+          setPassword("");
+        } else {
+          setPasswordError("Senha incorreta, tente novamente.");
+        }
       }
     } catch (error) {
       console.error("Erro ao realizar login:", error);
     }
+
   };
 
   return (
