@@ -7,6 +7,7 @@ import { MdVisibility, MdVisibilityOff } from "react-icons/md";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
 
 const url = "http://localhost:3000/users";
 
@@ -16,6 +17,7 @@ const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const toggleVisibility = () => {
@@ -36,10 +38,13 @@ const Login = () => {
         const passwordRes = await axios.get(url, { params: { email: email, password: password } });
 
         if (passwordRes.data.length > 0) {
-          alert("Login bem-sucedido.");
           setEmail("");
           setPassword("");
-          navigate("/home");
+          setShowModal(true);
+          setTimeout(() => {
+            setShowModal(false);
+            navigate("/home");
+          }, 3000);
         } else {
           setPasswordError("Senha incorreta, tente novamente.");
         }
@@ -52,6 +57,7 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
+      <Modal show={showModal} title={"Login realizado com sucesso"} message={"Um instante, iremos te redirecionar ao kanban !"} />
       <div className={styles.header}></div>
       <div className={styles.body}>
         <img src={loginImage} alt="logo-image" />

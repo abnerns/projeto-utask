@@ -53,6 +53,18 @@
       "username": "ei",
       "email": "ei123@gmail.com",
       "password": "Ei123."
+    },
+    {
+      "id": "2721",
+      "username": "teste",
+      "email": "teste132@gmail.com",
+      "password": "Teste123."
+    },
+    {
+      "id": "82ab",
+      "username": "test",
+      "email": "test@gmail.com",
+      "password": "Ti123456."
     }
   ]
 }

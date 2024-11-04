@@ -6,6 +6,7 @@ import Button from "../../components/Button/Button";
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Modal from "../../components/Modal/Modal";
 
 const url = "http://localhost:3000/users";
 
@@ -19,6 +20,7 @@ const Register = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [confirmPasswordError, setConfirmPasswordError] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const navigate = useNavigate();
 
   const passwdRegex = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[.#?!@$%^&*-]).{5,}$/;
@@ -56,22 +58,21 @@ const Register = () => {
     try {
       const res = await axios.post(url, { username, email, password });
       if (res.status === 201) {
-        alert("Usuário cadastrado com sucesso!");
-        setUsername("");
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-        navigate("/");
+        setShowModal(true);
+        setTimeout(() => {
+          setShowModal(false);
+          navigate("/");
+        }, 3000);
       }
     } catch (error) {
       console.error("Erro ao cadastrar usuário:", error);
       alert("Erro ao cadastrar o usuário.");
     }
-
   };
 
   return (
     <div className={styles.container}>
+      <Modal show={showModal} title={"Conta criada com sucesso"} message={"Um instante, iremos te redirecionar ao login !"} />
       <div className={styles.header}></div>
       <div className={styles.body}>
         <form className={styles.form} onSubmit={handleSubmit}>
