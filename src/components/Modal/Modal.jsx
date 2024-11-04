@@ -1,5 +1,6 @@
 import styles from './Modal.module.css'
 import verifyModal from "../../assets/images/verifyModal.png"
+import PropTypes from "prop-types";
 
 const Modal = ({show, title, message}) => {
     if (!show) return null;
@@ -17,5 +18,11 @@ const Modal = ({show, title, message}) => {
 
   )
 }
+
+Modal.propTypes = {
+    show: PropTypes.bool,
+    title: PropTypes.string,
+    message: PropTypes.string
+  };
 
 export default Modal
