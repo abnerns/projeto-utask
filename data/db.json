@@ -66,5 +66,19 @@
       "email": "test@gmail.com",
       "password": "Ti123456."
     }
+  ],
+  "tasks": [
+    {
+      "id": "2c01",
+      "title": "caminhar",
+      "description": "tarega",
+      "status": "A fazer"
+    },
+    {
+      "id": "770d",
+      "title": "teste",
+      "description": "testando",
+      "status": "A fazer"
+    }
   ]
 }
