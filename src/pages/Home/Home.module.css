@@ -16,10 +16,38 @@
     color: white;
     align-items: center;
     justify-content: space-between;
+    padding: 0 17.5rem;
+}
+
+.body{
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 17.5rem;
+    gap: 2.5rem;
 }
 
 a{
     color: white;
     text-decoration: none;
     font-weight: 600;
+}
+
+.taskContainer{
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+}
+
+.taskBox{
+    background-color: #EEEEEE;
+    border-radius: 10px;
+    width: 18.313rem;
+    min-height: 21rem;
+    padding: 1rem;
+}
+
+.addIcon{
+    border: 2px solid #226ED8;
+    border-radius: 20px;
+    padding: 0.25rem;
 }

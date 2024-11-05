@@ -1,6 +1,6 @@
 import styles from './Home.module.css'
 import logoUnect from "../../assets/images/unectLogo.png"
-import { MdFavorite, MdLightMode } from 'react-icons/md'
+import { MdAdd, MdFavorite, MdLightMode } from 'react-icons/md'
 import DailyPhrase from '../../components/DailyPhrase/DailyPhrase'
 import Task from '../../components/Task/Task'
 
@@ -12,8 +12,29 @@ const Home = () => {
           <p style={{fontWeight: "bold", fontSize: "30px", color: "white"}}>uTask 3.0</p>
           <MdLightMode color='#FBB910' size={26} />
         </div>
-        <DailyPhrase />
-        <Task />
+        <div className={styles.body}>
+          <DailyPhrase />
+          <div className={styles.taskContainer}>
+            <div style={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+              <span style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}><p style={{fontSize: "20px"}}>A fazer</p><MdAdd color='#226ED8' size={26} className={styles.addIcon} /></span>
+              <div className={styles.taskBox}>
+                <Task />
+              </div>
+            </div>
+            <div style={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+              <p style={{fontSize: "20px"}}>Em andamento</p>
+              <div className={styles.taskBox}>
+
+              </div>
+            </div>
+            <div style={{display: "flex", flexDirection: "column", gap: "0.5rem"}}>
+              <p style={{fontSize: "20px"}}>Feito</p>
+              <div className={styles.taskBox}>
+
+              </div>
+            </div>
+          </div>
+        </div>
         <div className={styles.footer}>
           <p>© Processo de Trainee <a href='https://unect.com.br/' target="_blank">Unect Jr. </a></p>
           <span style={{display: "flex", alignItems: "center", gap: "0.5rem"}}>
