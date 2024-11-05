@@ -19,8 +19,8 @@ const TaskModal = ({ close, addTask }) => {
     };
 
     try {
-      await axios.post(url, newTask);
-      addTask(newTask);
+      const res = await axios.post(url, newTask);
+      addTask(res.data);
       setTitle("");
       setDescription("");
       close();
