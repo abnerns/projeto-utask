@@ -1,0 +1,29 @@
+.container{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 15.875rem;
+    background-color: #FFFFFF;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.taskItem{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navigateBefore{
+    border: 1px solid #226ED8;
+    border-radius: 20px;
+    background-color: #FFFFFF;
+    cursor: pointer;
+}
+
+.navigateNext{
+    background-color: #226ED8;
+    border-radius: 20px;
+    cursor: pointer;
+}
