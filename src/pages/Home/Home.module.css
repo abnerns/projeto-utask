@@ -50,4 +50,11 @@ a{
     border: 2px solid #226ED8;
     border-radius: 20px;
     padding: 0.25rem;
+    color: #226ED8;
+    cursor: pointer;
+}
+
+.addIcon:hover{
+    color: white;
+    background-color: #226ED8;
 }

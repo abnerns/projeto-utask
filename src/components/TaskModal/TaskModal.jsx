@@ -1,13 +1,13 @@
 import { MdClose } from 'react-icons/md'
 import styles from './TaskModal.module.css'
 
-const TaskModal = () => {
+const TaskModal = ({ close }) => {
   return (
     <div className={styles.overlay}>
         <div className={styles.modal}>
             <span style={{display: "flex", justifyContent: "flex-end", gap: "7rem"}}>
                 <p className={styles.title}>Nova Task</p>
-                <MdClose size={32} className={styles.closeIcon} />
+                <MdClose size={32} className={styles.closeIcon} onClick={close} />
             </span>
             <form className={styles.form}>
                 <div>
