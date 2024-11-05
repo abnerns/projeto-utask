@@ -26,3 +26,25 @@
     border-radius: 20px;
     cursor: pointer;
 }
+
+.deleteButton {
+    position: absolute;
+    top: 1.5rem;
+    left: -3.25rem;
+    background-color: #FFFFFF;
+    height: 2rem;
+    width: 4.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: #DF0000;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.deleteButton:hover{
+    background-color: #DF0000;
+    color: #FFFFFF;
+}

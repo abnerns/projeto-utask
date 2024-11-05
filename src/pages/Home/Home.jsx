@@ -31,6 +31,15 @@ const Home = () => {
     setTasks([...tasks, newTask])
   }
 
+  const deleteTask = async (taskId) => {
+    try {
+      await axios.delete(`${url}/${taskId}`);
+      setTasks(tasks.filter((task) => task.id !== taskId));
+    } catch (error) {
+      console.error("Erro ao deletar a task:", error);
+    }
+  };
+
   return (
     <div className={styles.container}>
       {modal && <TaskModal close={closeModal} addTask={handleTask} />}
@@ -49,7 +58,7 @@ const Home = () => {
             </span>
             <div className={styles.taskBox}>
               {tasks.filter(task => task.status === 'A fazer').map(task => (
-                  <Task key={task.id} title={task.title} description={task.description} />
+                  <Task key={task.id} id={task.id} title={task.title} description={task.description} onDelete={deleteTask} />
                 ))}
             </div>
           </div>
