@@ -67,5 +67,12 @@
       "password": "Ti123456."
     }
   ],
-  "tasks": []
+  "tasks": [
+    {
+      "id": "ecbb",
+      "title": "amor",
+      "description": "roma",
+      "status": "A fazer"
+    }
+  ]
 }

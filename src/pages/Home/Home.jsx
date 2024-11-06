@@ -18,18 +18,18 @@ const Home = () => {
   useEffect(() => {
     const fetchTasks = async () => {
       try {
-        const res = await axios.get(url)
-        setTasks(res.data)
+        const res = await axios.get(url);
+        setTasks(res.data);
       } catch (error) {
-        console.error("Erro ao buscar tasks:", error)
+        console.error("Erro ao buscar tasks:", error);
       }
-    }
-    fetchTasks()
-  }, [])
+    };
+    fetchTasks();
+  }, []);
 
   const handleTask = (newTask) => {
-    setTasks([...tasks, newTask])
-  }
+    setTasks([...tasks, newTask]);
+  };
 
   const deleteTask = async (taskId) => {
     try {
@@ -37,6 +37,34 @@ const Home = () => {
       setTasks(tasks.filter((task) => task.id !== taskId));
     } catch (error) {
       console.error("Erro ao deletar a task:", error);
+    }
+  };
+
+  const updateStatus = async (taskId, updateTask) => {
+    try {
+      await axios.put(`${url}/${taskId}`, updateTask);
+      setTasks(tasks.map(task => task.id === taskId ? updateTask : task));
+    } catch (error) {
+      console.error("Erro ao atualizar status da task:", error);
+    }
+  };
+
+  const moveTask = (taskId, direction) => {
+    const task = tasks.find((task) => task.id === taskId);
+    if (!task) return;
+
+    let newStatus = task.status;
+    if (direction === 'next') {
+      if (task.status === 'A fazer') newStatus = 'Em andamento';
+      else if (task.status === 'Em andamento') newStatus = 'Feito';
+    } else if (direction === 'previous') {
+      if (task.status === 'Feito') newStatus = 'Em andamento';
+      else if (task.status === 'Em andamento') newStatus = 'A fazer';
+    }
+
+    if (newStatus !== task.status) {
+      const updatedTask = { ...task, status: newStatus };
+      updateStatus(taskId, updatedTask);
     }
   };
 
@@ -58,24 +86,45 @@ const Home = () => {
             </span>
             <div className={styles.taskBox}>
               {tasks.filter(task => task.status === 'A fazer').map(task => (
-                  <Task key={task.id} id={task.id} title={task.title} description={task.description} onDelete={deleteTask} />
-                ))}
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  onDelete={deleteTask}
+                  onMove={moveTask}
+                  status={task.status}
+                />
+              ))}
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <p style={{ fontSize: '20px' }}>Em andamento</p>
             <div className={styles.taskBox}>
               {tasks.filter(task => task.status === 'Em andamento').map(task => (
-                  <Task key={task.id} title={task.title} description={task.description} />
-                ))}
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  onMove={moveTask}
+                />
+              ))}
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
             <p style={{ fontSize: '20px' }}>Feito</p>
             <div className={styles.taskBox}>
               {tasks.filter(task => task.status === 'Feito').map(task => (
-                  <Task key={task.id} title={task.title} description={task.description} />
-                ))}
+                <Task
+                  key={task.id}
+                  id={task.id}
+                  title={task.title}
+                  description={task.description}
+                  onMove={moveTask}
+                  status={task.status}
+                />
+              ))}
             </div>
           </div>
         </div>

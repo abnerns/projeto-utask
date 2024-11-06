@@ -3,7 +3,7 @@ import styles from './Task.module.css';
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Task = ({ id, title, description, onDelete }) => {
+const Task = ({ id, title, description, onDelete, onMove, status }) => {
   const [expand, setExpand] = useState(false);
   const [showDelete, setShowDelete] = useState(false);
 
@@ -40,8 +40,12 @@ const Task = ({ id, title, description, onDelete }) => {
           <p style={{ fontSize: '12px', display: expand ? 'block' : 'none' }}>{description}</p>
         </div>
         <span style={{ display: 'flex', gap: '0.5rem', alignSelf: 'flex-end' }}>
-          <MdNavigateBefore color='#226ED8' size={26} className={styles.navigateBefore} />
-          <MdNavigateNext color='#FFF' size={26} className={styles.navigateNext} />
+        {status !== "A fazer" && (
+          <MdNavigateBefore color='#226ED8' size={26} className={styles.navigateBefore} onClick={() => onMove(id, 'previous')} />
+        )}
+        {status !== "Feito" && (
+          <MdNavigateNext color='#FFF' size={26} className={styles.navigateNext} onClick={() => onMove(id, 'next')} />
+        )}
         </span>
       </div>
     </div>
@@ -50,9 +54,11 @@ const Task = ({ id, title, description, onDelete }) => {
 
 Task.propTypes = {
   id: PropTypes.number.isRequired,
-  title: PropTypes.string,
-  description: PropTypes.string,
-  onDelete: PropTypes.func
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+  onDelete: PropTypes.func,
+  onMove: PropTypes.func.isRequired,
+  status: PropTypes.string
 };
 
 export default Task;
