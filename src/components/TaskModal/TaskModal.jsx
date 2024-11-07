@@ -5,7 +5,7 @@ import styles from './TaskModal.module.css';
 const url = "http://localhost:3000/tasks";
 import PropTypes from 'prop-types';
 
-const TaskModal = ({ close, addTask }) => {
+const TaskModal = ({ close, addTask, darkMode }) => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
 
@@ -30,7 +30,7 @@ const TaskModal = ({ close, addTask }) => {
   };
 
   return (
-    <div className={styles.overlay}>
+    <div className={`${styles.overlay} ${darkMode ? styles.dark : ''}`}>
       <div className={styles.modal}>
         <span style={{ display: 'flex', justifyContent: 'flex-end', gap: '7rem' }}>
           <p className={styles.title}>Nova Task</p>
@@ -55,6 +55,7 @@ const TaskModal = ({ close, addTask }) => {
 TaskModal.propTypes = {
     close: PropTypes.func,
     addTask: PropTypes.func,
+    darkMode: PropTypes.bool
   };
 
 export default TaskModal;

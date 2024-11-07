@@ -1,3 +1,8 @@
+.container{
+    height: 100vh;
+    width: 100%;
+}
+
 .header{
     background-color: #226ED8;
     width: 100%;
@@ -6,6 +11,12 @@
     display: flex;
     align-items: center;
     justify-content: space-around;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 30px;
+    color: white;
 }
 
 .footer{
@@ -60,4 +71,68 @@ a{
 .addIcon:hover{
     color: white;
     background-color: #226ED8;
+}
+
+.toggleIcon{
+    background: linear-gradient(#FFC93F, #FFC93F);
+    width: 4rem;
+    height: 2rem;
+    padding: 0.15rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.lightIcon{
+    color: #FBB910;
+    background-color: #FFFFFF;
+    border-radius: 100px;
+    padding: 0.1rem;
+    cursor: pointer;
+}
+
+.darkIcon{
+    color: #222222;
+    background-color: #FFFFFF;
+    border-radius: 100px;
+    padding: 0.1rem;
+    cursor: pointer;
+    opacity: 0;
+}
+
+.dark .lightIcon{
+    opacity: 0;
+}
+
+.dark .darkIcon{
+    opacity: 1;
+}
+
+.dark .toggleIcon{
+    background: linear-gradient(#222222, #111111);
+}
+
+.dark .header{
+    background-color: #333333;
+}
+
+.dark .title{
+    color: #3867D6;
+}
+
+.dark .body{
+    background-color: #222222;
+}
+
+.dark .footer{
+    background-color: #111111;
+}
+
+.dark .taskContainer p{
+    color: #FAFAFA;
+}
+
+.dark .taskBox{
+    background-color: #333333;
 }
