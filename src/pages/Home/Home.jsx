@@ -60,6 +60,8 @@ const Home = () => {
     } else if (direction === 'previous') {
       if (task.status === 'Feito') newStatus = 'Em andamento';
       else if (task.status === 'Em andamento') newStatus = 'A fazer';
+    } else if (direction === 'replay') {
+      if (task.status === "Feito") newStatus = 'A fazer';
     }
 
     if (newStatus !== task.status) {

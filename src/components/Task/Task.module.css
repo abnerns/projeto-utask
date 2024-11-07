@@ -15,6 +15,7 @@
 }
 
 .navigateBefore{
+    color: #226ED8;
     border: 1px solid #226ED8;
     border-radius: 20px;
     background-color: #FFFFFF;
@@ -22,9 +23,30 @@
 }
 
 .navigateNext{
+    color: #FFFFFF;
     background-color: #226ED8;
     border-radius: 20px;
     cursor: pointer;
+}
+
+.replayIcon{
+    color: #FFFFFF;
+    background-color: #226ED8;
+    border-radius: 20px;
+    cursor: pointer;
+    padding: 0.2rem;
+}
+
+.navigateBefore:hover{
+    background-color: #EEEEEE;
+}
+
+.navigateNext:hover{
+    background-color: #114FA7;
+}
+
+.replayIcon:hover{
+    background-color: #114FA7;
 }
 
 .deleteButton {
