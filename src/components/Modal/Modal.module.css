@@ -25,3 +25,15 @@
     justify-content: center;
     z-index: 1000;
 }
+
+@media screen and (max-width: 440px) {
+
+    .modal{
+        width: 85%;
+    }
+
+    .modal img{
+        width: 3rem;
+        height: 2.625rem;
+    }
+}

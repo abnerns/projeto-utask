@@ -65,6 +65,24 @@
       "username": "test",
       "email": "test@gmail.com",
       "password": "Ti123456."
+    },
+    {
+      "id": "2740",
+      "username": "abner",
+      "email": "abn@gmail.com",
+      "password": "Ab123."
+    },
+    {
+      "id": "6ea8",
+      "username": "oi",
+      "email": "oi@gmail.com",
+      "password": "Oi123."
+    },
+    {
+      "id": "58e8",
+      "username": "oi1",
+      "email": "oi1@gmail.com",
+      "password": "Oi123."
     }
   ],
   "tasks": [
