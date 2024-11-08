@@ -74,3 +74,13 @@
     display: none;
     width: 23.375rem;
 }
+
+@media screen and (max-width: 440px) {
+    .body img{
+        display: none;
+    }
+
+    .form{
+        width: 100%;
+    }
+}

@@ -31,3 +31,10 @@
 .invalid input{
     background-color: #FFE5E5;
 }
+
+@media screen and (max-width: 440px) {
+
+    .inputContainer{
+        width: 20.4rem;
+    }
+}

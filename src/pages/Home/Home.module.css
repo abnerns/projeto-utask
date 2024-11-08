@@ -1,4 +1,6 @@
 .container{
+    display: flex;
+    flex-direction: column;
     height: 100vh;
     width: 100%;
 }
@@ -35,6 +37,8 @@
     flex-direction: column;
     padding: 2.5rem 17.5rem;
     gap: 2.5rem;
+    flex: 1;
+    align-items: flex-start;
 }
 
 a{
@@ -154,4 +158,10 @@ a{
 
 .dark .taskBox{
     background-color: #333333;
+}
+
+@media screen and (min-width: 1600px) {
+    .body{
+        align-items: center;
+    }
 }
