@@ -57,7 +57,7 @@ const Login = () => {
 
   return (
     <div className={styles.container}>
-      <Modal show={showModal} title={"Login realizado com sucesso"} message={"Um instante, iremos te redirecionar ao kanban !"} />
+      <Modal show={showModal} title={"Login realizado com sucesso"} message={"Iremos te redirecionar ao Kanban !"} />
       <div className={styles.header}></div>
       <div className={styles.body}>
         <img src={loginImage} alt="logo-image" />
