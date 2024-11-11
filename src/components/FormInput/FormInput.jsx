@@ -20,7 +20,7 @@ FormInput.propTypes = {
   value: PropTypes.string,
   onChange: PropTypes.func,
   children: PropTypes.node,
-  isInvalid: PropTypes.bool,
+  isInvalid: PropTypes.string,
 };
 
 export default FormInput;
