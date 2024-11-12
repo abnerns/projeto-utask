@@ -121,65 +121,72 @@ const Home = () => {
       )}
       <div className={styles.taskContainer}>
       {responsive ? (
-        <div className={styles.responsiveContainer}>
-          <MdNavigateBefore size={40} onClick={previousColumn} className={styles.navButton} />
-          <div className={styles.taskColumn}>
-            {currentColumn === 0 && (
-              <div>
-                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  <p style={{ fontSize: '20px' }}>A fazer</p>
-                  <MdAdd size={30} className={styles.addIcon} onClick={openModal} />
-                </span>
-                <div className={styles.taskBox}>
-                  {tasks.filter(task => task.status === 'A fazer').map(task => (
-                    <Task 
-                      key={task.id}
-                      id={task.id}
-                      title={task.title}
-                      description={task.description}
-                      onMove={moveTask}
-                      darkMode={darkMode}
-                    />
-                  ))}
+        <div>
+          <div className={styles.responsiveContainer}>
+            <MdNavigateBefore size={40} onClick={previousColumn} className={styles.navButton} />
+            <div className={styles.taskColumn}>
+              {currentColumn === 0 && (
+                <div>
+                  <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <p style={{ fontSize: '20px' }}>A fazer</p>
+                    <MdAdd size={30} className={styles.addIcon} onClick={openModal} />
+                  </span>
+                  <div className={styles.taskBox}>
+                    {tasks.filter(task => task.status === 'A fazer').map(task => (
+                      <Task 
+                        key={task.id}
+                        id={task.id}
+                        title={task.title}
+                        description={task.description}
+                        onMove={moveTask}
+                        darkMode={darkMode}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-            {currentColumn === 1 && (
-              <div>
-                <p style={{ fontSize: '20px' }}>Em andamento</p>
-                <div className={styles.taskBox}>
-                  {tasks.filter(task => task.status === 'Em andamento').map(task => (
-                    <Task 
-                      key={task.id}
-                      id={task.id}
-                      title={task.title}
-                      description={task.description}
-                      onMove={moveTask}
-                      darkMode={darkMode}
-                    />
-                  ))}
+              )}
+              {currentColumn === 1 && (
+                <div>
+                  <p style={{ fontSize: '20px' }}>Em andamento</p>
+                  <div className={styles.taskBox}>
+                    {tasks.filter(task => task.status === 'Em andamento').map(task => (
+                      <Task 
+                        key={task.id}
+                        id={task.id}
+                        title={task.title}
+                        description={task.description}
+                        onMove={moveTask}
+                        darkMode={darkMode}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
-            {currentColumn === 2 && (
-              <div>
-                <p style={{ fontSize: '20px' }}>Feito</p>
-                <div className={styles.taskBox}>
-                  {tasks.filter(task => task.status === 'Feito').map(task => (
-                    <Task 
-                      key={task.id}
-                      id={task.id}
-                      title={task.title}
-                      description={task.description}
-                      onMove={moveTask}
-                      darkMode={darkMode}
-                    />
-                  ))}
+              )}
+              {currentColumn === 2 && (
+                <div>
+                  <p style={{ fontSize: '20px' }}>Feito</p>
+                  <div className={styles.taskBox}>
+                    {tasks.filter(task => task.status === 'Feito').map(task => (
+                      <Task 
+                        key={task.id}
+                        id={task.id}
+                        title={task.title}
+                        description={task.description}
+                        onMove={moveTask}
+                        darkMode={darkMode}
+                      />
+                    ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
+            <MdNavigateNext size={40} onClick={nextColumn} className={styles.navButton} />
           </div>
-          <MdNavigateNext size={40} onClick={nextColumn} className={styles.navButton} />
+          <div className={styles.navDots}>
+            <div className={`${styles.dot} ${currentColumn === 0 ? styles.active : ''}`} />
+            <div className={`${styles.dot} ${currentColumn === 1 ? styles.active : ''}`} />
+            <div className={`${styles.dot} ${currentColumn === 2 ? styles.active : ''}`} />
+          </div>
         </div>
       ) : (
         <div className={styles.taskContainer}>
