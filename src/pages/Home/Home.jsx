@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from './Home.module.css';
 import unectLogo from '../../assets/images/unectLogo.png';
 import unectLogoDark from '../../assets/images/unectLogoDark.png';
-import { MdAdd, MdDarkMode, MdFavorite, MdLightMode } from 'react-icons/md';
+import { MdAdd, MdClose, MdDarkMode, MdFavorite, MdLightMode, MdTipsAndUpdates } from 'react-icons/md';
 import DailyPhrase from '../../components/DailyPhrase/DailyPhrase';
 import Task from '../../components/Task/Task';
 import TaskModal from '../../components/TaskModal/TaskModal';
@@ -13,10 +13,14 @@ const Home = () => {
   const [modal, setModal] = useState(false);
   const [tasks, setTasks] = useState([]);
   const [darkMode, setDarkMode] = useState(false)
+  const [showDpModal, setShowDpModal] = useState(false);
+  const [responsive, setResponsive] = useState(window.innerWidth <= 440);
 
   const openModal = () => setModal(true);
   const closeModal = () => setModal(false);
   const changeTheme = () => setDarkMode(!darkMode)
+
+  const toggleDpModal = () => setShowDpModal(!showDpModal);
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -28,6 +32,13 @@ const Home = () => {
       }
     };
     fetchTasks();
+
+    const handleResize = () => {
+      setResponsive(window.innerWidth <= 440);
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleTask = (newTask) => {
@@ -85,9 +96,22 @@ const Home = () => {
         </div>
       </div>
       <div className={styles.body}>
-        <DailyPhrase darkMode={darkMode} />
+      {responsive ? (
+        <button onClick={toggleDpModal} className={styles.responsiveBtn}>
+          <div className={styles.responsiveIcon}><MdTipsAndUpdates size={30} /></div>
+          <p style={{fontSize: "16px", fontWeight: "bold"}}>Frase do Dia</p>
+        </button>
+      ) : (<DailyPhrase darkMode={darkMode} />)}
+      {showDpModal && (
+        <div className={styles.overlay} onClick={toggleDpModal}>
+          <div className={styles.dailyPhraseModal} onClick={(e) => e.stopPropagation()}>
+          <MdClose className={styles.closeIcon} onClick={toggleDpModal} />
+          <DailyPhrase darkMode={darkMode} responsive={responsive} />
+          </div>
+        </div>
+      )}
         <div className={styles.taskContainer}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div className={styles.taskColumn}>
             <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <p style={{ fontSize: '20px' }}>A fazer</p>
               <MdAdd size={30} className={styles.addIcon} onClick={openModal} />
@@ -107,7 +131,7 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div className={styles.taskColumn}>
             <p style={{ fontSize: '20px' }}>Em andamento</p>
             <div className={styles.taskBox}>
               {tasks.filter(task => task.status === 'Em andamento').map(task => (
@@ -122,7 +146,7 @@ const Home = () => {
               ))}
             </div>
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+          <div className={styles.taskColumn}>
             <p style={{ fontSize: '20px' }}>Feito</p>
             <div className={styles.taskBox}>
               {tasks.filter(task => task.status === 'Feito').map(task => (

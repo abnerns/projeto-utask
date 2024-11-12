@@ -53,6 +53,12 @@ a{
     gap: 2.5rem;
 }
 
+.taskColumn{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
 .taskBox{
     background-color: #EEEEEE;
     border-radius: 10px;
@@ -124,6 +130,78 @@ a{
     opacity: 0;
 }
 
+.responsiveBtn{
+    background-color: #FFD569;
+    border-radius: 10px;
+    border: none;
+    height: 3.75rem;
+    width: 17.938rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+    gap: 1rem;
+    color: #FFFFFF;
+    font-size: 16px;
+}
+
+.responsiveBtn:hover{
+    background-color: #FBB910;
+}
+
+.responsiveIcon{
+    background-color: #FFF5C0;
+    border-radius: 50%;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.35rem;
+    color: #FBB910;
+    border: 5px solid #FFFCEE;
+}
+
+.dailyPhraseModal {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 20px;
+    max-width: 90%;
+    position: relative;
+}
+
+.closeIcon {
+    position: absolute;
+    top: 25px;
+    right: 20px;
+    border: 2px solid #226ED8;
+    border-radius: 20px;
+    padding: 0.35rem;
+    color: #226ED8;
+    cursor: pointer;
+    justify-content: center;
+    width: 1.875rem;
+    height: 1.875rem;
+}
+
+.closeIcon:hover{
+    color: white;
+    background-color: #226ED8;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
 .dark .lightIcon{
     opacity: 0;
 }
@@ -160,6 +238,16 @@ a{
     background-color: #333333;
 }
 
+.dark .responsiveBtn{
+    background-color: #3D3D3D;
+}
+
+.dark .responsiveIcon{
+    color: #FAFAFA;
+    background-color: #3D3D3D;
+    border: 5px solid #515151;
+}
+
 @media screen and (min-width: 1600px) {
     .body{
         align-items: center;
@@ -169,10 +257,58 @@ a{
 @media screen and (max-width: 440px) {
     .header{
         width: 100%;
+        padding: 1rem;
     }
 
     .body{
+        padding: 0;
+        align-items: center;
+    }
+
+    .taskContainer {
+        display: flex;
+        overflow-x: hidden;
+        scroll-snap-type: x mandatory;
+        width: 100%;
+        transform: translateX(calc(-100% * var(--current-column)));
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .taskColumn {
+        min-width: 100%;
+        scroll-snap-align: center;
+        align-items: center;
+      }
+    
+      .navigation {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 1rem;
+      }
+    
+      .dotContainer {
+        display: flex;
+        justify-content: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+      }
+    
+      .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: lightgray;
+      }
+    
+      .dot.active {
+        background-color: gray;
+      }
+
+    .footer{
         padding: 1rem;
+        height: 4.375rem;
+        flex-direction: column;
+        align-items: flex-start;
     }
 
 }
