@@ -32,7 +32,7 @@ const TaskModal = ({ close, addTask, darkMode }) => {
   return (
     <div className={`${styles.overlay} ${darkMode ? styles.dark : ''}`}>
       <div className={styles.modal}>
-        <span style={{ display: 'flex', justifyContent: 'flex-end', gap: '7rem' }}>
+        <span className={styles.spanTitle}>
           <p className={styles.title}>Nova Task</p>
           <MdClose size={32} className={styles.closeIcon} onClick={close} />
         </span>

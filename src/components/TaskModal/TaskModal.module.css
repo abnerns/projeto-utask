@@ -26,6 +26,12 @@
     z-index: 1000;
 }
 
+.spanTitle{
+    display: flex;
+    justify-content: flex-end;
+    gap: 7rem;
+}
+
 .title{
     position: relative;
     color: #3867D6;
@@ -128,4 +134,14 @@
 
 .dark .title{
     color: #226ED8;
+}
+
+@media screen and (max-width: 440px) {
+    .modal{
+        width: 80%;
+    }
+
+    .spanTitle{
+        gap: 3.5rem;
+    }
 }
