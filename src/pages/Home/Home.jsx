@@ -138,7 +138,9 @@ const Home = () => {
                         id={task.id}
                         title={task.title}
                         description={task.description}
+                        onDelete={deleteTask}
                         onMove={moveTask}
+                        status={task.status}
                         darkMode={darkMode}
                       />
                     ))}
@@ -155,7 +157,9 @@ const Home = () => {
                         id={task.id}
                         title={task.title}
                         description={task.description}
+                        onDelete={deleteTask}
                         onMove={moveTask}
+                        status={task.status}
                         darkMode={darkMode}
                       />
                     ))}
@@ -172,7 +176,9 @@ const Home = () => {
                         id={task.id}
                         title={task.title}
                         description={task.description}
+                        onDelete={deleteTask}
                         onMove={moveTask}
+                        status={task.status}
                         darkMode={darkMode}
                       />
                     ))}
