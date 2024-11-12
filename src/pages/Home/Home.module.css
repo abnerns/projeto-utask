@@ -248,6 +248,11 @@ a{
     border: 5px solid #515151;
 }
 
+.dark .dailyPhraseModal{
+    background-color: #3D3D3D;
+    color: #FAFAFA;
+}
+
 @media screen and (min-width: 1600px) {
     .body{
         align-items: center;
