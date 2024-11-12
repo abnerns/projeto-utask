@@ -3,7 +3,7 @@ import axios from 'axios';
 import styles from './Home.module.css';
 import unectLogo from '../../assets/images/unectLogo.png';
 import unectLogoDark from '../../assets/images/unectLogoDark.png';
-import { MdAdd, MdClose, MdDarkMode, MdFavorite, MdLightMode, MdTipsAndUpdates } from 'react-icons/md';
+import { MdAdd, MdClose, MdDarkMode, MdFavorite, MdLightMode, MdNavigateBefore, MdNavigateNext, MdTipsAndUpdates } from 'react-icons/md';
 import DailyPhrase from '../../components/DailyPhrase/DailyPhrase';
 import Task from '../../components/Task/Task';
 import TaskModal from '../../components/TaskModal/TaskModal';
@@ -15,12 +15,20 @@ const Home = () => {
   const [darkMode, setDarkMode] = useState(false)
   const [showDpModal, setShowDpModal] = useState(false);
   const [responsive, setResponsive] = useState(window.innerWidth <= 440);
+  const [currentColumn, setCurrentColumn] = useState(0);
 
   const openModal = () => setModal(true);
   const closeModal = () => setModal(false);
   const changeTheme = () => setDarkMode(!darkMode)
-
   const toggleDpModal = () => setShowDpModal(!showDpModal);
+
+  const nextColumn = () => {
+    setCurrentColumn((prevColumn) => (prevColumn + 1) % 3);
+  };
+
+  const previousColumn = () => {
+    setCurrentColumn((prevColumn) => (prevColumn - 1 + 3) % 3);
+  };
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -36,6 +44,7 @@ const Home = () => {
     const handleResize = () => {
       setResponsive(window.innerWidth <= 440);
     }
+
     handleResize();
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
@@ -110,6 +119,69 @@ const Home = () => {
           </div>
         </div>
       )}
+      <div className={styles.taskContainer}>
+      {responsive ? (
+        <div className={styles.responsiveContainer}>
+          <MdNavigateBefore size={40} onClick={previousColumn} className={styles.navButton} />
+          <div className={styles.taskColumn}>
+            {currentColumn === 0 && (
+              <div>
+                <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <p style={{ fontSize: '20px' }}>A fazer</p>
+                  <MdAdd size={30} className={styles.addIcon} onClick={openModal} />
+                </span>
+                <div className={styles.taskBox}>
+                  {tasks.filter(task => task.status === 'A fazer').map(task => (
+                    <Task 
+                      key={task.id}
+                      id={task.id}
+                      title={task.title}
+                      description={task.description}
+                      onMove={moveTask}
+                      darkMode={darkMode}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+            {currentColumn === 1 && (
+              <div>
+                <p style={{ fontSize: '20px' }}>Em andamento</p>
+                <div className={styles.taskBox}>
+                  {tasks.filter(task => task.status === 'Em andamento').map(task => (
+                    <Task 
+                      key={task.id}
+                      id={task.id}
+                      title={task.title}
+                      description={task.description}
+                      onMove={moveTask}
+                      darkMode={darkMode}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+            {currentColumn === 2 && (
+              <div>
+                <p style={{ fontSize: '20px' }}>Feito</p>
+                <div className={styles.taskBox}>
+                  {tasks.filter(task => task.status === 'Feito').map(task => (
+                    <Task 
+                      key={task.id}
+                      id={task.id}
+                      title={task.title}
+                      description={task.description}
+                      onMove={moveTask}
+                      darkMode={darkMode}
+                    />
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+          <MdNavigateNext size={40} onClick={nextColumn} className={styles.navButton} />
+        </div>
+      ) : (
         <div className={styles.taskContainer}>
           <div className={styles.taskColumn}>
             <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
@@ -163,6 +235,8 @@ const Home = () => {
             </div>
           </div>
         </div>
+      )}
+    </div>
       </div>
       <div className={styles.footer}>
         <p>© Processo de Trainee <a href='https://unect.com.br/' target="_blank">Unect Jr.</a></p>
