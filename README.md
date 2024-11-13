@@ -1,7 +1,7 @@
 <h3 align="center">Projeto Trainee - Unect Jr.</h3>
 
-<p align="center"> O objetivo deste projeto era desenvolver uma landing page de uma cafeteria fictícia, utilizando dos recursos e conhecimentos fornecidos pelas capacitações durante o processo trainee da empresa júnior.
-    <br> 
+<p align="center"> O objetivo deste projeto era desenvolver um sistema web de um quadro Kanban, que permitisse o cadastro e autenticação do usuário, fosse responsivo e tivesse a opção de alterar a visualização da tela entre modo claro e escuro, utilizando dos recursos e conhecimentos fornecidos pelas capacitações durante o processo trainee da empresa júnior.
+<br> 
 </p>
 
 <div align="center">
