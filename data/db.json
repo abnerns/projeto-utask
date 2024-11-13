@@ -1,58 +1,10 @@
 {
   "users": [
     {
-      "id": "ee4b",
-      "username": "abner",
-      "email": "abner@gmail.com",
-      "password": "ab123"
-    },
-    {
-      "id": "3bdb",
-      "username": "abner",
-      "email": "abner@gmail.com",
-      "password": "ab12"
-    },
-    {
-      "id": "16ab",
-      "username": "abner",
-      "email": "abner@gmail.com",
-      "password": "ab12"
-    },
-    {
-      "id": "9258",
-      "username": "abner",
-      "email": "abner@gmail.com",
-      "password": "Ab123456."
-    },
-    {
       "id": "76c2",
       "username": "abner",
       "email": "abner@gmail.com",
       "password": "Abn123."
-    },
-    {
-      "id": "6f32",
-      "username": "2eas",
-      "email": "ab@gmail.com",
-      "password": "dasfaA."
-    },
-    {
-      "id": "e8f7",
-      "username": "ab",
-      "email": "ab@gmail.com",
-      "password": "Ab123."
-    },
-    {
-      "id": "bbef",
-      "username": "oi",
-      "email": "oi123@gmail.com",
-      "password": "Oi123."
-    },
-    {
-      "id": "0f46",
-      "username": "ei",
-      "email": "ei123@gmail.com",
-      "password": "Ei123."
     },
     {
       "id": "2721",
@@ -67,58 +19,46 @@
       "password": "Ti123456."
     },
     {
-      "id": "2740",
-      "username": "abner",
-      "email": "abn@gmail.com",
-      "password": "Ab123."
-    },
-    {
-      "id": "6ea8",
-      "username": "oi",
-      "email": "oi@gmail.com",
-      "password": "Oi123."
-    },
-    {
-      "id": "58e8",
-      "username": "oi1",
-      "email": "oi1@gmail.com",
-      "password": "Oi123."
-    },
-    {
-      "id": "010c",
-      "username": "ab",
-      "email": "ab@gmail.com",
-      "password": "Ab123."
-    },
-    {
-      "id": "8d2d",
-      "username": "aaa",
-      "email": "a@gmail.com",
-      "password": "Aaa123."
+      "id": "3995",
+      "username": "Unino",
+      "email": "unino@gmail.com",
+      "password": "Uni123."
     }
   ],
   "tasks": [
     {
-      "id": "ecbb",
-      "title": "amor",
-      "description": "roma",
+      "id": "48f5",
+      "title": "Pagar conta de luz",
+      "description": "Vão cortar mês que vem :(",
       "status": "A fazer"
     },
     {
-      "id": "1ab1",
-      "title": "asdasfas",
-      "description": "asd",
+      "id": "9c38",
+      "title": "Fazer compras no mercado",
+      "description": "Comprar batata, cenoura, feijão, alho, arroz e pipoca.",
       "status": "A fazer"
     },
     {
-      "id": "9f58",
-      "title": "asdas",
-      "description": "",
+      "id": "f9a2",
+      "title": "Fazer manicure",
+      "description": "Amanha dps do almoço",
       "status": "A fazer"
     },
     {
-      "id": "e6e4",
-      "title": "asdasf",
+      "id": "ef71",
+      "title": "Desenvolver projeto",
+      "description": "Projeto trainee da Unect - uTask 3.0",
+      "status": "Feito"
+    },
+    {
+      "id": "036a",
+      "title": "Fazer atividade ",
+      "description": "Atividades da faculdade",
+      "status": "Em andamento"
+    },
+    {
+      "id": "4e1a",
+      "title": "Pagar academia",
       "description": "",
       "status": "A fazer"
     }
