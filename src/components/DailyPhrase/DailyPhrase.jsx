@@ -48,7 +48,8 @@ const DailyPhrase = ({ darkMode, responsive }) => {
 };
 
 DailyPhrase.propTypes = {
-  darkMode: PropTypes.bool
+  darkMode: PropTypes.bool,
+  responsive: PropTypes.bool
 }
 
 export default DailyPhrase
